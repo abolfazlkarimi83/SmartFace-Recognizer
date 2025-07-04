@@ -1,74 +1,100 @@
-# 🌸 Iris Dataset Clustering with KMeans  
-(خوشه‌بندی دیتاست آیریس با الگوریتم KMeans)
+🔐 Real-time Face Recognition with Webcam
+(تشخیص چهره به‌صورت زنده با استفاده از وب‌کم)
 
----
+📚 About the Project | درباره پروژه
+This project demonstrates how to build a simple real-time face recognition system using a webcam and the face_recognition library.
+It allows users to compare faces captured by the webcam with reference images and identify known individuals by displaying their names on screen.
 
-## 📚 About the Project | درباره پروژه
+این پروژه نشان می‌دهد چگونه می‌توان یک سیستم ساده‌ی تشخیص چهره به صورت زنده با استفاده از وب‌کم و کتابخانه‌ی face_recognition ایجاد کرد.
+این برنامه چهره‌های شناسایی‌شده از طریق وب‌کم را با تصاویر مرجع مقایسه کرده و در صورت تشخیص، نام آن‌ها را روی تصویر نمایش می‌دهد.
 
-This project demonstrates how to perform unsupervised clustering on the classic Iris dataset using the KMeans algorithm.  
-We load the Iris dataset, apply KMeans clustering to group the flowers into 3 clusters, and visualize the results alongside the actual species labels.  
+🧩 How It Works | این پروژه چطور کار می‌کند؟
+Load face images (reference images) with names you choose (e.g., person1.jpg, person2.jpg).
 
-این پروژه نشان می‌دهد چگونه می‌توان خوشه‌بندی بدون نظارت (Unsupervised Clustering) را روی دیتاست معروف آیریس با الگوریتم KMeans انجام داد.  
-در این پروژه، دیتاست آیریس بارگذاری شده، سپس با KMeans خوشه‌بندی به ۳ خوشه انجام می‌شود و نتایج خوشه‌بندی همراه با برچسب‌های واقعی گونه‌های گل به صورت تصویری نمایش داده می‌شود.
+Encode each face using face_recognition.face_encodings.
 
----
+Start the webcam and capture live video frames.
 
-## 🧩 Dataset Features | ویژگی‌های دیتاست
+Detect and encode faces in each frame.
 
-| Index | Feature Name    | شرح ویژگی              |
-|-------|-----------------|------------------------|
-| 0     | Sepal Length    | طول کاسبرگ             |
-| 1     | Sepal Width     | عرض کاسبرگ             |
-| 2     | Petal Length    | طول گلبرگ              |
-| 3     | Petal Width     | عرض گلبرگ              |
+Compare live faces with known encodings.
 
----
+Display the person's name if matched, or mark as unknown.
 
-## 🔧 Technologies Used | تکنولوژی‌های استفاده شده
+۱. تصاویر مرجع (مثلاً person1.jpg، person2.jpg) را با نام دلخواه خود وارد کنید.
+۲. چهره‌ها توسط تابع face_encodings کدگذاری می‌شوند.
+۳. ویدیو به‌صورت زنده از وب‌کم دریافت می‌شود.
+۴. چهره‌ها در هر فریم تشخیص و کدگذاری می‌شوند.
+۵. چهره زنده با چهره‌های مرجع مقایسه می‌شود.
+۶. اگر چهره تطبیق پیدا کرد، نام فرد نمایش داده می‌شود، در غیر این صورت برچسب «ناشناس» (Unknown) قرار می‌گیرد.
 
-- Python 3.x  
-- NumPy  
-- Matplotlib  
-- Scikit-learn (for dataset and KMeans)
+🧠 Technologies Used | تکنولوژی‌های استفاده شده
+Python 3.x
 
----
+OpenCV (cv2) for webcam access and drawing
 
-## 🚀 How to Run | نحوه اجرای پروژه
+face_recognition library for encoding and comparing faces
 
-1. Make sure you have Python 3 installed.  
-2. Install required packages:
+NumPy
 
-   ```bash
-   pip install numpy matplotlib scikit-learn
+🚀 How to Run | نحوه اجرای پروژه
+Install required packages:
 
----
-نمودار خوشه‌بندی K-Means روی دیتاست Iris
-این نمودار در سمت چپ نتایج خوشه‌بندی الگوریتم K-Means را روی دو ویژگی طول و عرض گلبرگ (Petal Length و Petal Width) نشان می‌دهد. نقاط قرمز رنگ با علامت ضربدر (×) مراکز خوشه‌ها هستند.
-نمودار سمت راست کلاس‌های واقعی (Ground Truth) نمونه‌ها را نمایش می‌دهد که برای مقایسه با خوشه‌بندی به کار می‌رود.
+bash
+Copy
+Edit
+pip install face_recognition opencv-python numpy
+Put your reference face images (e.g., ali.jpg, reza.jpg) in the same directory.
 
+Update the code with the filenames and labels you want (e.g., "Ali", "Reza").
 
-K-Means Clustering Plot on Iris Dataset
-The left plot shows the clustering results of the K-Means algorithm on two features: Petal Length and Petal Width. Red crosses (×) represent the cluster centers.
-The right plot displays the actual classes (Ground Truth) of the samples for comparison
+Run the script:
 
+bash
+Copy
+Edit
+python face_recognizer.py
+Press q to quit the webcam window.
 
-![Scatter plot of Iris data](iris_kmeans_plot.png)
+📁 Example Folder Structure | ساختار فایل پروژه
+Copy
+Edit
+face_recognition_project/
+│
+├── face_recognizer.py
+├── ali.jpg
+├── reza.jpg
+└── README.md
+📷 Output Example | نمونه خروجی
+وقتی وب‌کم یک چهره را شناسایی می‌کند، نام آن شخص روی تصویر ظاهر می‌شود. اگر تطبیقی یافت نشود، برچسب "is not a defined" نمایش داده می‌شود.
 
+When the webcam recognizes a face, it shows the person’s name on screen. If no match is found, it displays “is not a defined”.
 
+🔐 Use Cases | موارد استفاده
+Entry access systems
 
----
-## About Me | درباره من
+Attendance systems
 
-👋 My name is **Abolfazl Karimi**. I am a professional AI programmer specializing in developing real-world machine learning and deep learning projects. 
-📫 Contact me via Email: karimiabolfazl466@gmail.com  
-📱 Telegram: [@Abolfazlk83](https://t.me/Abolfazlk83)   
-🌐 LinkedIn: ***  
-🐙 GitHub: [github.com/abolfazlkarimi83](https://github.com/abolfazlkarimi83)
+Personalized AI interfaces
 
----
+Educational and demo projects
 
-👋 من **ابوالفضل کریمی** هستم، برنامه‌نویس حرفه‌ای هوش مصنوعی با تخصص در توسعه پروژه‌های عملی یادگیری ماشین و یادگیری عمیق.  
-📫 ایمیل: karimiabolfazl466@gmail.com  
-📱 تلگرام: [@Abolfazlk83](https://t.me/Abolfazlk83)  
-🌐 لینکدین: *** 
-🐙 گیت‌هاب: [github.com/abolfazlkarimi83](https://github.com/abolfazlkarimi83)
+سیستم‌های کنترل ورود
+
+سیستم حضور و غیاب
+
+رابط‌های کاربری هوشمند شخصی‌سازی‌شده
+
+پروژه‌های آموزشی و دمو
+
+About Me | درباره من
+👋 My name is Abolfazl Karimi, and I'm an AI programmer focused on real-world deep learning and computer vision applications.
+📫 Email: karimiabolfazl466@gmail.com
+📱 Telegram: @Abolfazlk83
+🐙 GitHub: github.com/abolfazlkarimi83
+
+👋 من ابوالفضل کریمی هستم، برنامه‌نویس هوش مصنوعی با تمرکز بر پروژه‌های عملی در حوزه یادگیری عمیق و بینایی ماشین.
+📫 ایمیل: karimiabolfazl466@gmail.com
+📱 تلگرام: @Abolfazlk83
+🐙 گیت‌هاب: github.com/abolfazlkarimi83
+
