@@ -1,100 +1,90 @@
-🔐 Real-time Face Recognition with Webcam
-(تشخیص چهره به‌صورت زنده با استفاده از وب‌کم)
+# 😎 Real-Time Face Recognition using Face\_Recognition and OpenCV
 
-📚 About the Project | درباره پروژه
-This project demonstrates how to build a simple real-time face recognition system using a webcam and the face_recognition library.
-It allows users to compare faces captured by the webcam with reference images and identify known individuals by displaying their names on screen.
+(تشخیص چهره به‌صورت زنده با استفاده از کتابخانه Face\_Recognition و OpenCV)
 
-این پروژه نشان می‌دهد چگونه می‌توان یک سیستم ساده‌ی تشخیص چهره به صورت زنده با استفاده از وب‌کم و کتابخانه‌ی face_recognition ایجاد کرد.
-این برنامه چهره‌های شناسایی‌شده از طریق وب‌کم را با تصاویر مرجع مقایسه کرده و در صورت تشخیص، نام آن‌ها را روی تصویر نمایش می‌دهد.
+---
 
-🧩 How It Works | این پروژه چطور کار می‌کند؟
-Load face images (reference images) with names you choose (e.g., person1.jpg, person2.jpg).
+## 📚 About the Project | درباره پروژه
 
-Encode each face using face_recognition.face_encodings.
+This project performs real-time face recognition using a webcam and the powerful `face_recognition` library in Python.
+The program detects faces from a live video feed and matches them with previously known faces by comparing facial encodings.
 
-Start the webcam and capture live video frames.
+این پروژه به تشخیص چهره افراد از طریق وب‌کم به صورت زنده می‌پردازد. با استفاده از کتابخانه `face_recognition` چهره‌ها تشخیص داده شده و با چهره‌های از پیش شناخته‌شده مقایسه می‌شوند تا در صورت تطابق، نام فرد نمایش داده شود.
 
-Detect and encode faces in each frame.
+---
 
-Compare live faces with known encodings.
+## 🧵 Features | ویژگی‌ها
 
-Display the person's name if matched, or mark as unknown.
+* Real-time face detection from webcam
+  (تشخیص چهره به صورت زنده از طریق دوربین)
+* Facial recognition using encoding comparison
+  (شناسایی چهره‌ها با مقایسه بردارهای ویژگی)
+* Display name label on recognized faces
+  (نمایش نام افراد شناخته‌شده روی تصویر)
+* Easily extensible for adding more known faces
+  (قابلیت افزودن چهره‌های جدید با عکس دلخواه)
 
-۱. تصاویر مرجع (مثلاً person1.jpg، person2.jpg) را با نام دلخواه خود وارد کنید.
-۲. چهره‌ها توسط تابع face_encodings کدگذاری می‌شوند.
-۳. ویدیو به‌صورت زنده از وب‌کم دریافت می‌شود.
-۴. چهره‌ها در هر فریم تشخیص و کدگذاری می‌شوند.
-۵. چهره زنده با چهره‌های مرجع مقایسه می‌شود.
-۶. اگر چهره تطبیق پیدا کرد، نام فرد نمایش داده می‌شود، در غیر این صورت برچسب «ناشناس» (Unknown) قرار می‌گیرد.
+---
 
-🧠 Technologies Used | تکنولوژی‌های استفاده شده
-Python 3.x
+## 📊 How it Works | نحوه عملکرد
 
-OpenCV (cv2) for webcam access and drawing
+1. Load known face images and extract their encodings.
+   (بارگذاری عکس‌های چهره و استخراج ویژگی‌های آن‌ها)
+2. Capture real-time video from the webcam.
+   (دریافت ویدیو زنده از دوربین)
+3. Detect all faces in the current frame.
+   (تشخیص چهره در تصویر فعلی)
+4. Compare detected faces with known encodings.
+   (مقایسه چهره‌های تشخیص داده شده با چهره‌های شناخته شده)
+5. Display the name of the matched person on the screen.
+   (نمایش نام فرد تطبیق داده شده روی تصویر)
 
-face_recognition library for encoding and comparing faces
+---
 
-NumPy
+## 🛠️ Technologies Used | تکنولوژی‌های استفاده شده
 
-🚀 How to Run | نحوه اجرای پروژه
-Install required packages:
+* Python 3.x
+* OpenCV
+* face\_recognition (based on dlib)
+* NumPy
 
-bash
-Copy
-Edit
-pip install face_recognition opencv-python numpy
-Put your reference face images (e.g., ali.jpg, reza.jpg) in the same directory.
+---
 
-Update the code with the filenames and labels you want (e.g., "Ali", "Reza").
+## 🚀 How to Run | نحوه اجرای پروژه
 
-Run the script:
+1. Make sure Python 3 is installed.
 
-bash
-Copy
-Edit
-python face_recognizer.py
-Press q to quit the webcam window.
+2. Install required packages:
 
-📁 Example Folder Structure | ساختار فایل پروژه
-Copy
-Edit
-face_recognition_project/
-│
-├── face_recognizer.py
-├── ali.jpg
-├── reza.jpg
-└── README.md
-📷 Output Example | نمونه خروجی
-وقتی وب‌کم یک چهره را شناسایی می‌کند، نام آن شخص روی تصویر ظاهر می‌شود. اگر تطبیقی یافت نشود، برچسب "is not a defined" نمایش داده می‌شود.
+   ```bash
+   pip install opencv-python face_recognition numpy
+   ```
 
-When the webcam recognizes a face, it shows the person’s name on screen. If no match is found, it displays “is not a defined”.
+3. Prepare images of known faces and name them (e.g., `person1.jpg`, `person2.jpg`).
 
-🔐 Use Cases | موارد استفاده
-Entry access systems
+4. Update the Python script with the correct file names and names.
 
-Attendance systems
+5. Run the script:
 
-Personalized AI interfaces
+   ```bash
+   python face_recognition_script.py
+   ```
 
-Educational and demo projects
+6. Press `q` to exit the video stream.
 
-سیستم‌های کنترل ورود
+---
 
-سیستم حضور و غیاب
+## 👤 About Me | درباره من
 
-رابط‌های کاربری هوشمند شخصی‌سازی‌شده
+**Abolfazl Karimi** — AI and Machine Learning Developer
+**ابوالفضل کریمی** — توسعه‌دهنده هوش مصنوعی و یادگیری ماشین
 
-پروژه‌های آموزشی و دمو
+📧 Email: [karimiabolfazl466@gmail.com](mailto:karimiabolfazl466@gmail.com)
+📱 Telegram: [@Abolfazlk83](https://t.me/Abolfazlk83)
+👍 GitHub: [github.com/abolfazlkarimi83](https://github.com/abolfazlkarimi83)
 
-About Me | درباره من
-👋 My name is Abolfazl Karimi, and I'm an AI programmer focused on real-world deep learning and computer vision applications.
-📫 Email: karimiabolfazl466@gmail.com
-📱 Telegram: @Abolfazlk83
-🐙 GitHub: github.com/abolfazlkarimi83
+---
 
-👋 من ابوالفضل کریمی هستم، برنامه‌نویس هوش مصنوعی با تمرکز بر پروژه‌های عملی در حوزه یادگیری عمیق و بینایی ماشین.
-📫 ایمیل: karimiabolfazl466@gmail.com
-📱 تلگرام: @Abolfazlk83
-🐙 گیت‌هاب: github.com/abolfazlkarimi83
-
+> This project provides a strong foundation for building real-time surveillance systems, secure access applications, or smart home automation tools.
+>
+> این پروژه می‌تواند پایه‌ای برای سیستم‌های نظارتی زنده، اپلیکیشن‌های امنیتی یا ابزارهای خانه هوشمند باشد.
